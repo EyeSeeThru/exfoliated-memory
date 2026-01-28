@@ -1,10 +1,10 @@
-# Three-Layer Memory System for Clawdbot
+# Three-Layer Memory System for Moltbot
 
 A self-maintaining knowledge graph that compounds over time. Not just memory — compounding intelligence.
 
 ## Overview
 
-Most AI assistants forget by default. Clawdbot doesn't — but out of the box, its memory is static. This system upgrades Clawdbot into a living knowledge graph that:
+Most AI assistants forget by default. Moltbot doesn't — but out of the box, its memory is static. This system upgrades Moltbot into a living knowledge graph that:
 
 - ✅ Never forgets
 - ✅ Never goes stale  
@@ -33,7 +33,7 @@ Each layer serves a purpose. Together, they compound.
 
 ### Prerequisites
 
-- Clawdbot installed and running
+- Moltbot installed and running
 - Ollama running with `qwen3:4b` model
 - `nomic-embed-text` embedding model
 - SQLite3 (`brew install sqlite3`)
@@ -240,7 +240,7 @@ Create `/Users/estm/clawd/bin/memory/index-entities.sh`:
 
 ```bash
 #!/bin/bash
-# Entity Indexing Script - Indexes entity facts into Clawdbot's vector DB
+# Entity Indexing Script - Indexes entity facts into Moltbot's vector DB
 
 OUTPUT_DIR="/Users/estm/clawd/life/areas"
 VECTOR_DB="$HOME/.clawdbot/memory/main.sqlite"
@@ -406,7 +406,7 @@ Create `/Users/estm/clawd/bin/memory-cmd`:
 
 ```bash
 #!/bin/bash
-# Clawdbot Memory Command Wrapper
+# Moltbot Memory Command Wrapper
 
 case "${1:-}" in
     extract)
@@ -437,7 +437,7 @@ case "${1:-}" in
         ls -1 /Users/estm/clawd/life/areas/projects/ 2>/dev/null | grep -v "^_template$" | sed 's/^/  - /'
         ;;
     help|*)
-        echo "Clawdbot Memory Commands"
+        echo "Moltbot Memory Commands"
         echo ""
         echo "Usage: clawdbot memory <command> [options]"
         echo ""
@@ -467,7 +467,7 @@ clawdbot cron add --name "weekly-memory-synthesis" --schedule "0 2 * * 0" \
   --session main --text "Weekly Memory Synthesis"
 ```
 
-### Step 5: Configure Clawdbot Memory Search
+### Step 5: Configure Moltbot Memory Search
 
 In `~/.clawdbot/clawdbot.json`:
 
@@ -488,7 +488,7 @@ In `~/.clawdbot/clawdbot.json`:
 }
 ```
 
-### Step 6: Restart Clawdbot
+### Step 6: Restart Moltbot
 
 ```bash
 clawdbot gateway restart
@@ -628,7 +628,7 @@ MIT License - Open source and free to use.
 
 ## Credits
 
-Built for [Clawdbot](https://github.com/clawdbot/clawdbot) by EyeSeeThru.
+Built for [Moltbot](https://github.com/clawdbot/clawdbot) by EyeSeeThru.
 
 Inspired by the "Three-Layer Memory System" concept.
 

@@ -1,6 +1,6 @@
 #!/bin/bash
 # Three-Layer Memory System Setup Script
-# Run this on your Clawdbot instance
+# Run this on your Moltbot instance
 
 set -e
 
@@ -274,7 +274,7 @@ SCRIPT
 # memory-cmd
 cat > "$BIN_PATH/../memory-cmd" << 'SCRIPT'
 #!/bin/bash
-# Clawdbot Memory Command Wrapper
+# Moltbot Memory Command Wrapper
 
 case "${1:-}" in
     extract)
@@ -305,7 +305,7 @@ case "${1:-}" in
         ls -1 /Users/estm/clawd/life/areas/projects/ 2>/dev/null | grep -v "^_template$" | sed 's/^/  - /'
         ;;
     help|*)
-        echo "Clawdbot Memory Commands"
+        echo "Moltbot Memory Commands"
         echo ""
         echo "Usage: clawdbot memory <command> [options]"
         echo ""
@@ -333,7 +333,7 @@ echo "=== Setup Complete ==="
 echo ""
 echo "Next steps:"
 echo "1. Configure memory search in ~/.clawdbot/clawdbot.json"
-echo "2. Restart Clawdbot: clawdbot gateway restart"
+echo "2. Restart Moltbot: clawdbot gateway restart"
 echo "3. Test: /Users/estm/clawd/bin/memory-cmd status"
 echo ""
 echo "See SETUP.md for full documentation."

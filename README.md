@@ -1,4 +1,4 @@
-# Three-Layer Memory System for Clawdbot
+# Three-Layer Memory System for Moltbot
 
 A self-maintaining knowledge graph that compounds over time.
 
@@ -12,7 +12,7 @@ cd clawdbot-three-layer-memory
 
 ## Overview
 
-Most AI assistants forget by default. Clawdbot doesn't — but out of the box, its memory is static. This system upgrades Clawdbot into a living knowledge graph.
+Most AI assistants forget by default. Moltbot doesn't — but out of the box, its memory is static. This system upgrades Moltbot into a living knowledge graph.
 
 ## Features
 
@@ -25,7 +25,7 @@ Most AI assistants forget by default. Clawdbot doesn't — but out of the box, i
 
 ## Requirements
 
-- Clawdbot installed
+- Moltbot installed
 - Ollama with qwen3:4b
 - nomic-embed-text model
 - SQLite3
