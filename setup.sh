@@ -59,8 +59,8 @@ cat > "$BIN_PATH/extract-facts.sh" << 'SCRIPT'
 #!/bin/bash
 # Simple Fact Extraction - Pattern-based for fast migration
 
-MEMORY_DIR="/Users/estm/clawd/memory"
-OUTPUT_DIR="/Users/estm/clawd/life/areas"
+MEMORY_DIR="$HOME/clawd/memory"
+OUTPUT_DIR="$HOME/clawd/life/areas"
 
 SINCE_DATE="${1:-$(date -v-1d +%Y-%m-%d 2>/dev/null || date -d "yesterday" +%Y-%m-%d)}"
 
@@ -109,7 +109,7 @@ cat > "$BIN_PATH/detect-entities.sh" << 'SCRIPT'
 #!/bin/bash
 # Entity Detection and Fact Categorization Script
 
-OUTPUT_DIR="/Users/estm/clawd/life/areas"
+OUTPUT_DIR="$HOME/clawd/life/areas"
 TEMPLATE_DIR="$OUTPUT_DIR"
 
 sanitize_name() {
@@ -175,7 +175,7 @@ cat > "$BIN_PATH/index-entities.sh" << 'SCRIPT'
 #!/bin/bash
 # Entity Indexing Script
 
-OUTPUT_DIR="/Users/estm/clawd/life/areas"
+OUTPUT_DIR="$HOME/clawd/life/areas"
 VECTOR_DB="$HOME/.clawdbot/memory/main.sqlite"
 
 init_db() {
@@ -229,7 +229,7 @@ cat > "$BIN_PATH/synthesize.sh" << 'SCRIPT'
 #!/bin/bash
 # Weekly Synthesis Script
 
-OUTPUT_DIR="/Users/estm/clawd/life/areas"
+OUTPUT_DIR="$HOME/clawd/life/areas"
 
 process_entity() {
     local entity_type="$1"
@@ -279,30 +279,30 @@ cat > "$BIN_PATH/../memory-cmd" << 'SCRIPT'
 case "${1:-}" in
     extract)
         shift
-        /Users/estm/clawd/bin/memory/extract-facts.sh "$@"
+        $HOME/clawd/bin/memory/extract-facts.sh "$@"
         ;;
     sync)
         shift
-        /Users/estm/clawd/bin/memory/index-entities.sh "$@"
+        $HOME/clawd/bin/memory/index-entities.sh "$@"
         ;;
     synthesize)
         shift
-        /Users/estm/clawd/bin/memory/synthesize.sh "$@"
+        $HOME/clawd/bin/memory/synthesize.sh "$@"
         ;;
     status)
-        /Users/estm/clawd/bin/memory/extract.sh --status
+        $HOME/clawd/bin/memory/extract.sh --status
         ;;
     entities)
         echo "=== Knowledge Graph Entities ==="
         echo ""
         echo "People:"
-        ls -1 /Users/estm/clawd/life/areas/people/ 2>/dev/null | grep -v "^_template$" | sed 's/^/  - /'
+        ls -1 $HOME/clawd/life/areas/people/ 2>/dev/null | grep -v "^_template$" | sed 's/^/  - /'
         echo ""
         echo "Companies:"
-        ls -1 /Users/estm/clawd/life/areas/companies/ 2>/dev/null | grep -v "^_template$" | sed 's/^/  - /'
+        ls -1 $HOME/clawd/life/areas/companies/ 2>/dev/null | grep -v "^_template$" | sed 's/^/  - /'
         echo ""
         echo "Projects:"
-        ls -1 /Users/estm/clawd/life/areas/projects/ 2>/dev/null | grep -v "^_template$" | sed 's/^/  - /'
+        ls -1 $HOME/clawd/life/areas/projects/ 2>/dev/null | grep -v "^_template$" | sed 's/^/  - /'
         ;;
     help|*)
         echo "Moltbot Memory Commands"
@@ -334,6 +334,6 @@ echo ""
 echo "Next steps:"
 echo "1. Configure memory search in ~/.clawdbot/clawdbot.json"
 echo "2. Restart Moltbot: clawdbot gateway restart"
-echo "3. Test: /Users/estm/clawd/bin/memory-cmd status"
+echo "3. Test: $HOME/clawd/bin/memory-cmd status"
 echo ""
 echo "See SETUP.md for full documentation."
