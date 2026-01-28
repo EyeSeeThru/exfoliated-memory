@@ -41,10 +41,10 @@ Each layer serves a purpose. Together, they compound.
 ### Step 1: Create Folder Structure
 
 ```bash
-mkdir -p /Users/estm/clawd/life/areas/people/_template
-mkdir -p /Users/estm/clawd/life/areas/companies/_template
-mkdir -p /Users/estm/clawd/life/areas/projects/_template
-mkdir -p /Users/estm/clawd/bin/memory
+mkdir -p /Users/username/clawd/life/areas/people/_template
+mkdir -p /Users/username/clawd/life/areas/companies/_template
+mkdir -p /Users/username/clawd/life/areas/projects/_template
+mkdir -p /Users/username/clawd/bin/memory
 ```
 
 ### Step 2: Create Template Files
@@ -70,14 +70,14 @@ mkdir -p /Users/estm/clawd/bin/memory
 
 ### Step 3: Create Extraction Scripts
 
-Create `/Users/estm/clawd/bin/memory/extract-facts.sh`:
+Create `/Users/username/clawd/bin/memory/extract-facts.sh`:
 
 ```bash
 #!/bin/bash
 # Simple Fact Extraction - Pattern-based for fast migration
 
-MEMORY_DIR="/Users/estm/clawd/memory"
-OUTPUT_DIR="/Users/estm/clawd/life/areas"
+MEMORY_DIR="/Users/username/clawd/memory"
+OUTPUT_DIR="/Users/username/clawd/life/areas"
 
 SINCE_DATE="${1:-$(date -v-1d +%Y-%m-%d 2>/dev/null || date -d "yesterday" +%Y-%m-%d)}"
 
@@ -146,13 +146,13 @@ echo ""
 echo "Extraction complete."
 ```
 
-Create `/Users/estm/clawd/bin/memory/detect-entities.sh`:
+Create `/Users/username/clawd/bin/memory/detect-entities.sh`:
 
 ```bash
 #!/bin/bash
 # Entity Detection and Fact Categorization Script
 
-OUTPUT_DIR="/Users/estm/clawd/life/areas"
+OUTPUT_DIR="/Users/username/clawd/life/areas"
 TEMPLATE_DIR="$OUTPUT_DIR"
 
 sanitize_name() {
@@ -236,13 +236,13 @@ echo ""
 echo "Entity detection complete."
 ```
 
-Create `/Users/estm/clawd/bin/memory/index-entities.sh`:
+Create `/Users/username/clawd/bin/memory/index-entities.sh`:
 
 ```bash
 #!/bin/bash
 # Entity Indexing Script - Indexes entity facts into Moltbot's vector DB
 
-OUTPUT_DIR="/Users/estm/clawd/life/areas"
+OUTPUT_DIR="/Users/username/clawd/life/areas"
 VECTOR_DB="$HOME/.clawdbot/memory/main.sqlite"
 
 init_db() {
@@ -323,13 +323,13 @@ echo ""
 echo "Indexed in: $VECTOR_DB"
 ```
 
-Create `/Users/estm/clawd/bin/memory/synthesize.sh`:
+Create `/Users/username/clawd/bin/memory/synthesize.sh`:
 
 ```bash
 #!/bin/bash
 # Weekly Synthesis Script - Rewrites entity summaries from active facts
 
-OUTPUT_DIR="/Users/estm/clawd/life/areas"
+OUTPUT_DIR="/Users/username/clawd/life/areas"
 MODEL="qwen3:4b"
 
 generate_summary() {
@@ -402,7 +402,7 @@ echo ""
 echo "Synthesis complete."
 ```
 
-Create `/Users/estm/clawd/bin/memory-cmd`:
+Create `/Users/username/clawd/bin/memory-cmd`:
 
 ```bash
 #!/bin/bash
@@ -411,30 +411,30 @@ Create `/Users/estm/clawd/bin/memory-cmd`:
 case "${1:-}" in
     extract)
         shift
-        /Users/estm/clawd/bin/memory/extract-facts.sh "$@"
+        /Users/username/clawd/bin/memory/extract-facts.sh "$@"
         ;;
     sync)
         shift
-        /Users/estm/clawd/bin/memory/index-entities.sh "$@"
+        /Users/username/clawd/bin/memory/index-entities.sh "$@"
         ;;
     synthesize)
         shift
-        /Users/estm/clawd/bin/memory/synthesize.sh "$@"
+        /Users/username/clawd/bin/memory/synthesize.sh "$@"
         ;;
     status)
-        /Users/estm/clawd/bin/memory/extract.sh --status
+        /Users/username/clawd/bin/memory/extract.sh --status
         ;;
     entities)
         echo "=== Knowledge Graph Entities ==="
         echo ""
         echo "People:"
-        ls -1 /Users/estm/clawd/life/areas/people/ 2>/dev/null | grep -v "^_template$" | sed 's/^/  - /'
+        ls -1 /Users/username/clawd/life/areas/people/ 2>/dev/null | grep -v "^_template$" | sed 's/^/  - /'
         echo ""
         echo "Companies:"
-        ls -1 /Users/estm/clawd/life/areas/companies/ 2>/dev/null | grep -v "^_template$" | sed 's/^/  - /'
+        ls -1 /Users/username/clawd/life/areas/companies/ 2>/dev/null | grep -v "^_template$" | sed 's/^/  - /'
         echo ""
         echo "Projects:"
-        ls -1 /Users/estm/clawd/life/areas/projects/ 2>/dev/null | grep -v "^_template$" | sed 's/^/  - /'
+        ls -1 /Users/username/clawd/life/areas/projects/ 2>/dev/null | grep -v "^_template$" | sed 's/^/  - /'
         ;;
     help|*)
         echo "Moltbot Memory Commands"
@@ -452,7 +452,7 @@ esac
 ```
 
 ```bash
-chmod +x /Users/estm/clawd/bin/memory/*.sh /Users/estm/clawd/bin/memory-cmd
+chmod +x /Users/username/clawd/bin/memory/*.sh /Users/username/clawd/bin/memory-cmd
 ```
 
 ### Step 4: Set Up Cron Jobs
@@ -502,27 +502,27 @@ clawdbot gateway restart
 
 1. **Write to memory file:**
    ```bash
-   echo "- 10:30am: Important decision made" >> /Users/estm/clawd/memory/$(date +%Y-%m-%d).md
+   echo "- 10:30am: Important decision made" >> /Users/username/clawd/memory/$(date +%Y-%m-%d).md
    ```
 
 2. **Check status:**
    ```bash
-   /Users/estm/clawd/bin/memory-cmd status
+   /Users/username/clawd/bin/memory-cmd status
    ```
 
 3. **Manual extraction (if needed):**
    ```bash
-   /Users/estm/clawd/bin/memory-cmd extract --since 2026-01-28
+   /Users/username/clawd/bin/memory-cmd extract --since 2026-01-28
    ```
 
 ### Querying Knowledge
 
 ```bash
 # Search knowledge graph
-/Users/estm/clawd/bin/memory-cmd entities
+/Users/username/clawd/bin/memory-cmd entities
 
 # List all entities
-/Users/estm/clawd/bin/memory-cmd status
+/Users/username/clawd/bin/memory-cmd status
 ```
 
 ---
@@ -532,7 +532,7 @@ clawdbot gateway restart
 ### Example: Company Entity
 
 ```
-/Users/estm/clawd/life/areas/companies/mymind/
+/Users/username/clawd/life/areas/companies/mymind/
 ├── items.json
 └── summary.md
 ```
@@ -597,13 +597,13 @@ Both use `nomic-embed-text` for semantic search.
 ## Troubleshooting
 
 ### Extraction returning no facts
-- Check that memory files exist: `ls /Users/estm/clawd/memory/*.md`
+- Check that memory files exist: `ls /Users/username/clawd/memory/*.md`
 - Verify file is not already marked extracted
 - Check pattern matching in `extract-facts.sh`
 
 ### Entities not appearing
-- Run sync: `/Users/estm/clawd/bin/memory-cmd sync --force`
-- Verify entity folders exist: `ls /Users/estm/clawd/life/areas/`
+- Run sync: `/Users/username/clawd/bin/memory-cmd sync --force`
+- Verify entity folders exist: `ls /Users/username/clawd/life/areas/`
 
 ### Cron not running
 - Check cron status: `clawdbot cron list`
