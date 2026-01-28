@@ -631,3 +631,16 @@ MIT License - Open source and free to use.
 Built for [Clawdbot](https://github.com/clawdbot/clawdbot) by EyeSeeThru.
 
 Inspired by the "Three-Layer Memory System" concept.
+
+## Open Source
+
+This project is open source on GitHub:
+
+**https://github.com/EyeSeeThru/clawdbot-three-layer-memory**
+
+Clone and install:
+```bash
+git clone https://github.com/EyeSeeThru/clawdbot-three-layer-memory.git
+cd clawdbot-three-layer-memory
+./setup.sh
+```
