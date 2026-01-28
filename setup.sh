@@ -1,5 +1,5 @@
 #!/bin/bash
-# Three-Layer Memory System Setup Script
+# Exfoliated Memory System Setup Script
 # Run this on your Moltbot instance
 
 set -e
@@ -8,7 +8,7 @@ CLAWD_PATH="${CLAWD_PATH:-$HOME/clawd}"
 MEMORY_PATH="$CLAWD_PATH/life/areas"
 BIN_PATH="$CLAWD_PATH/bin/memory"
 
-echo "=== Three-Layer Memory System Setup ==="
+echo "=== Exfoliated Memory System Setup ==="
 echo ""
 
 # Check prerequisites
