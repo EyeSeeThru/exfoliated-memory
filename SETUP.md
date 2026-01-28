@@ -630,7 +630,7 @@ MIT License - Open source and free to use.
 
 Built for [Moltbot](https://github.com/clawdbot/clawdbot) by EyeSeeThru.
 
-Inspired by the "Three-Layer Memory System" concept.
+Inspired by the ["Three-Layer Memory System"](https://x.com/spacepixel/status/2015967798636556777) concept.
 
 ## Open Source
 
