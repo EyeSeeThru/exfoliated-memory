@@ -1,4 +1,4 @@
-# Three-Layer Memory System for Moltbot
+# Exfoliated Memory System for Moltbot
 
 A self-maintaining knowledge graph that compounds over time. Not just memory — compounding intelligence.
 
@@ -636,11 +636,11 @@ Inspired by the ["Three-Layer Memory System"](https://x.com/spacepixel/status/20
 
 This project is open source on GitHub:
 
-**https://github.com/EyeSeeThru/clawdbot-three-layer-memory**
+**https://github.com/EyeSeeThru/exfoliated-memory**
 
 Clone and install:
 ```bash
-git clone https://github.com/EyeSeeThru/clawdbot-three-layer-memory.git
-cd clawdbot-three-layer-memory
+git clone https://github.com/EyeSeeThru/exfoliated-memory.git
+cd exfoliated-memory
 ./setup.sh
 ```
