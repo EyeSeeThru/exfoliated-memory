@@ -1,4 +1,4 @@
-# Exfoliated Memory System for Moltbot
+# Exfoliated Memory System for Openclaw
 
 A self-maintaining knowledge graph that compounds over time.
 
